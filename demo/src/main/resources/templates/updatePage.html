@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    table {
+      margin: 0 auto;
+      border-collapse: collapse;
+      width: 80%;
+      box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 0.5px 2px 0 rgba(0, 0, 0, 2.19);
+    }
+
+    th, td {
+      text-align: left;
+      padding: 12px;
+    }
+
+    th {
+      background-color: #1abc9c;
+      color: white;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #ddd;
+    }
+
+    input[type=text], input[type=number] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-top: 6px;
+      margin-bottom: 16px;
+    }
+
+    button[type=submit] {
+      background-color: #1abc9c;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type=submit]:hover {
+      background-color: #0e8a6c;
+    }
+  </style>
+
+</head>
+<body>
+<tr>
+  <h2 align="center">Update Book</h2>
+  <table align="center" width="600px" height="100px" border="0px"  style="box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 0.5px 2px 0 rgba(0, 0, 0, 2.19)">
+    <tr align="left">
+      <td style="width: 33%;">Name</td>
+      <td style="width: 33%;">Author</td>
+      <td style="width: 33%;">Price</td>
+    </tr>
+
+    <tr style="column-span: 7; color: grey">
+    <form th:action="@{/main/updateBook/{id}(id=${book.get().getId()})}" method="put">
+      <td width="50px"><input type="text" id="name" name="name" th:value="${book.get().getName()}"></td>
+
+      <td width="50px"><input type="text" id="author" name="author" th:value="${book.get().getAuthor()}"></td>
+
+
+      <td width="50px">
+        <input type="number" id="price" name="price" step="1.0" th:value="${book.get().getPrice()}">
+        </td>
+      <td></td>
+      <td><button type="submit">Update Book</button></td>
+
+    </form>
+  </tr>
+    </tr>
+    </table>
+</body>
+</html>
